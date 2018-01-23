@@ -1,0 +1,14 @@
+{
+  "name": "callbag-from-iter",
+  "version": "1.0.0",
+  "description": "Convert an iterable or iterator to a callbag pullable source",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "author": "staltz.com",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.8.0"
+  }
+}
