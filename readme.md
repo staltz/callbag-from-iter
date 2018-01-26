@@ -28,8 +28,8 @@ const iterate = require('callbag-iterate');
 
 const source = fromIter([10, 20, 30, 40].entries());
 
-source(0, iterate(x => console.log(x))); // [0,10]
-                                         // [1,20]
-                                         // [2,30]
-                                         // [3,40]
+iterate(x => console.log(x))(source); // [0,10]
+                                      // [1,20]
+                                      // [2,30]
+                                      // [3,40]
 ```
