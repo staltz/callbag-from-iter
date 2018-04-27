@@ -6,10 +6,11 @@ const fromIter = iter => (start, sink) => {
       : iter;
   let inloop = false;
   let got1 = false;
+  let completed = false;
   let res;
   function loop() {
     inloop = true;
-    while (got1) {
+    while (got1 && !completed) {
       got1 = false;
       res = iterator.next();
       if (res.done) sink(2);
@@ -18,9 +19,13 @@ const fromIter = iter => (start, sink) => {
     inloop = false;
   }
   sink(0, t => {
+    if (completed) return
+
     if (t === 1) {
       got1 = true;
       if (!inloop && !(res && res.done)) loop();
+    } else if (t === 2) {
+      completed = true;
     }
   });
 };

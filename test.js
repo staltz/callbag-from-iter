@@ -95,3 +95,35 @@ test('it does not blow up the stack when iterating something huge', t => {
   });
   t.equals(iterated, true, 'iteration happened synchronously');
 });
+
+test('it stops sending after source completion', t => {
+  t.plan(5);
+  const source = fromIter([10, 20, 30]);
+
+  const actual = [];
+  const downwardsExpectedTypes = [
+    [0, 'function'],
+    [1, 'number'],
+  ];
+
+  let talkback;
+  source(0, (type, data) => {
+    const et = downwardsExpectedTypes.shift();
+    t.equals(type, et[0], 'downwards type is expected: ' + et[0]);
+    t.equals(typeof data, et[1], 'downwards data type is expected: ' + et[1]);
+
+    if (type === 0) {
+      talkback = data;
+      talkback(1);
+      return;
+    }
+    if (type === 1) {
+      actual.push(data);
+      talkback(2);
+      talkback(1);
+      talkback(1);
+    }
+  });
+
+  t.deepEquals(actual, [10]);
+});
