@@ -1,6 +1,6 @@
 {
   "name": "callbag-from-iter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Convert an iterable or iterator to a callbag pullable source",
   "repository": {
     "type": "git",
