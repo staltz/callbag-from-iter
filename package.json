@@ -12,7 +12,9 @@
   },
   "author": "staltz.com",
   "license": "MIT",
-  "keywords": ["callbag"],
+  "keywords": [
+    "callbag"
+  ],
   "devDependencies": {
     "tape": "^4.8.0"
   }
