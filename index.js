@@ -13,7 +13,10 @@ const fromIter = iter => (start, sink) => {
     while (got1 && !completed) {
       got1 = false;
       res = iterator.next();
-      if (res.done) sink(2);
+      if (res.done) {
+        sink(2);
+        break;
+      }
       else sink(1, res.value);
     }
     inloop = false;
