@@ -1,5 +1,5 @@
 const test = require('tape');
-const fromIter = require('./index');
+const fromIter = require('.');
 
 test('it sends array items (iterable) to a puller sink', t => {
   t.plan(13);
@@ -69,7 +69,7 @@ test('it does not blow up the stack when iterating something huge', t => {
   t.plan(2);
   let i = 0;
   function* gen() {
-    while (i < 1000000) {
+    while (i < 100000000) {
       yield i++;
     }
   }
@@ -88,7 +88,7 @@ test('it does not blow up the stack when iterating something huge', t => {
       return;
     }
     if (type === 2) {
-      t.equals(i, 1000000, '1 million items were iterated');
+      t.equals(i, 100000000, '100 million items were iterated');
       iterated = true;
       return;
     }
