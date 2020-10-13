@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/staltz/callbag-from-iter.git"
   },
+  "types": "types.d.ts",
   "main": "index.js",
   "scripts": {
     "test": "tape test.js"
@@ -17,5 +18,8 @@
   ],
   "devDependencies": {
     "tape": "^4.8.0"
+  },
+  "dependencies": {
+    "callbag": "^1.2.0"
   }
 }
